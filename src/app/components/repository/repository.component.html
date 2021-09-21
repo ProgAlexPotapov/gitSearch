@@ -1,0 +1,36 @@
+<mat-form-field appearance="outline">
+  <mat-label>Input Repository Name</mat-label>
+  <input #input type="text" required aria-label="label" matInput placeholder="Angular"
+         [formControl]="search"
+         (keypress)="allowableChar($event);">
+  <mat-error *ngIf="search.invalid">{{errorMessage()}}</mat-error>
+</mat-form-field>
+
+<div class="layout horizontal panelOpen" [ngClass]="{ panelOpen: quickFormState }">
+  <div class="layoutPanel dynamic">
+    <div class="Panel">
+      <div class="Panel-Header">
+        <div class="title">{{input.value.toUpperCase()}} Repositories</div>
+      </div>
+      <div class="Panel-Body">
+        <div class="Panel-Content Y-Scroll withPadding custom-scroll">
+          <div class="card-container" *ngIf="searchResults">
+            <mat-card *ngFor="let repository of searchResults.items; let idx=index"
+                      [ngClass]="{ 'active': idx === selectedItemIdx}"
+                      (click)="selectRepository($event, idx)">
+              <mat-card-title>{{repository.name}}</mat-card-title>
+              <mat-card-subtitle>{{repository.url}}</mat-card-subtitle>
+              <mat-card-content>
+                <p>{{repository.description}}</p>
+              </mat-card-content>
+            </mat-card>
+          </div>
+          <div *ngIf="isDataReady" id="overlay">
+            <mat-spinner class="spinner-center" [diameter]="75"></mat-spinner>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-quick-form [repositoryItem]="selectedItem" (flagQuickForm)="closeQuickForm($event)"></app-quick-form>
+</div>

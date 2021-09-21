@@ -1,0 +1,20 @@
+<div class="Panel borderLeft">
+    <div class="Panel-Header">
+      <div class="title">
+        {{repositoryItem?.name?.toUpperCase()}} info
+      </div>
+      <button mat-icon-button (click)="closeQuickForm()">
+        <mat-icon class="material-icons-outlined">cancel_outline</mat-icon>
+      </button>
+    </div>
+    <div class="Panel-Body">
+        <div class="Panel-Content Y-Scroll custom-scroll">
+          <mat-selection-list [multiple]="false">
+            <mat-list-option *ngFor="let item of repositoryItem | keyvalue">
+              <div><strong>{{item.key}}</strong></div>
+              <div>{{item.value}}</div>
+            </mat-list-option>
+          </mat-selection-list>
+        </div>
+    </div>
+</div>

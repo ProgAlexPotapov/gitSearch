@@ -1,0 +1,42 @@
+* {  box-sizing: border-box;
+  &&::before, &&::after {  box-sizing: border-box;}
+}
+
+/**************************************************
+Main Sections
+***************************************************/
+html, body, .main-app { height: 100%; box-sizing: border-box; }
+body { margin: 0;}
+h1, h2, h3, h4, h5, h6 {   margin: 8px 0;}
+p {margin: 0;}
+a, a:visited, a:hover {  color: #1976d2;  text-decoration: none;}
+
+.main-app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 14px;
+  color: #333;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.main-body { flex: 1; overflow: hidden; padding: 1rem 1.5rem;}
+
+/**************************************************
+fadeIn Animation
+***************************************************/
+.fadeIn {animation-duration: 0.5s; animation-fill-mode: both; animation-name: fadeIn; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; }}
+#overlay { animation-duration: 0.5s; animation-fill-mode: both; animation-name: fadeIn;
+  position: absolute;  top: 0;  bottom: 0;  left: 0;  right: 0;  z-index: 1;
+  .spinner-center { position: absolute; margin: -50px 0 0 -50px; top: 50%; left: 50%;}
+}
+
+
+
+
+
+
+
